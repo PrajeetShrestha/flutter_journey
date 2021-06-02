@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterjourney/common_widgets/list_with_navigation.dart';
 import 'package:flutterjourney/pages/home/services/menu_data_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,22 +13,6 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Home"),
         ),
-        body: ListView.builder(
-          itemBuilder: (context, index) {
-            var item = menuItems[index];
-            return GestureDetector(
-              child: ListTile(
-                  title: Text(item.title),
-                  onTap: () {
-                    _showDetail(item.route, context);
-                  }),
-            );
-          },
-          itemCount: menuItems.length,
-        ));
-  }
-
-  void _showDetail(String route, BuildContext context) {
-    Navigator.pushNamed(context, route);
+        body: ListWithNavigationView(menuItems: menuItems));
   }
 }
